@@ -4,7 +4,7 @@ try {
     $host ="localhost";
     $username ="root";
     $password ="";
-    $dbname = "nuevafunval";
+    $dbname = "university";
     $dsn = "mysql:host=$host;dbname=$dbname";
     
     $pdo = new PDO ($dsn,$username,$password);
