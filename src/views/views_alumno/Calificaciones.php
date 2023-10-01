@@ -17,12 +17,14 @@
   </head>
 
   <body class="bg-blue-100 flex flex-col">
-    <div class="bg-white h-12 ml-48 flex">
+    <div class="bg-white h-12 ml-48">
       home
       <select name="ciudades" id="ciudades" class="ml-[85%] w-28">
-        <option value="1">[name]</option>
-        <option value="2"><i class="fas fa-arrow-up-right"></i> logout</option>
+        <option >[name]</option>
+        <option value="1">Perfil</option>
+        <option value="2">logout</option>
       </select>
+    
     </div>
     <div
       class="h-screen w-48 fixed bg-blue-900 pt-20 flex flex-col justify-normal"

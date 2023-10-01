@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +19,7 @@
         home
         <select name="ciudades" id="ciudades" class="ml-[85%]">
             <!-- Etiquetas option para las opciones de la lista -->
-            <option value="1">administrador</option>
+            <option value="1"><?=$_SESSION["user-data"][0]["NOMBRE"]?></option>
             <option value="2">logout</option>
             <!-- Puedes agregar más opciones según tus necesidades -->
         </select>
@@ -27,7 +30,7 @@
             <span class="text-white ml-5 mt-[-100px]">Universidad</span>
         </div>
         <div class="text-white border-b-2 border-b-blue-700 h-20 flex justify-center flex-col">
-            <h3 class="ml-5">[Name]</h3>
+            <h3 class="ml-5"><?=$_SESSION["user-data"][0]["NOMBRE"]?></h3>
             <span class="ml-5 text-xs">Administrador</span>
         </div>
         <div class="pt-5">

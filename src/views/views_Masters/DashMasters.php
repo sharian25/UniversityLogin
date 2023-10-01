@@ -38,7 +38,7 @@
       <div
         class="text-white border-b-2 border-b-blue-700 h-20 flex justify-center flex-col"
       >
-        <span class="ml-5 text-xl">Alumno</span>
+        <span class="ml-5 text-xl">Maestro</span>
         <h3 class="ml-5">[Name]</h3>
       </div>
       <div class="pt-5">

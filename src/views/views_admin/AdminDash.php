@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,17 +11,16 @@
     <link rel="stylesheet" href="/dist/output.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/6838e0d0bd.js" crossorigin="anonymous"></script>
-    <title>Admin-Page</title>
+    <script src="/src/models/logout.js"></script>
+    <title>Alum-Page</title>
 </head>
 
 <body class="bg-blue-100 flex flex-col ">
     <div class="bg-white h-12 ml-48 flex">
         home
-        <select name="ciudades" id="ciudades" class="ml-[85%]">
-            <!-- Etiquetas option para las opciones de la lista -->
-            <option value="1">administrador</option>
-            <option value="2">logout</option>
-            <!-- Puedes agregar más opciones según tus necesidades -->
+        <select class="ml-[85%]" id="logout" onchange="logout()">
+            <option value="1"><?=$_SESSION["user-data"][0]["NOMBRE"]?></option>
+            <option value="logout">logout</option>
         </select>
     </div>
     <div class=" h-screen w-48 fixed bg-blue-900 pt-20 flex flex-col justify-normal">
@@ -27,7 +29,7 @@
             <span class="text-white ml-5 mt-[-100px]">Universidad</span>
         </div>
         <div class="text-white border-b-2 border-b-blue-700 h-20 flex justify-center flex-col">
-            <h3 class="ml-5">[Name]</h3>
+            <h3 class="ml-5"><?=$_SESSION["user-data"][0]["NOMBRE"]?></h3>
             <span class="ml-5 text-xs">Administrador</span>
         </div>
         <div class="pt-5">
@@ -42,13 +44,18 @@
 
     </div>
     <div class="content ml-52 p-4">
-        <div class="flex ">
-            <h1 class="text-xl mb-4 ">Dashboard</h1>
-            <a href="/src/views/views_admin/AdminDash.php" class="ml-[80%]"><span class="text-blue-700">Home</span>/Dashboard</a>
+        <div class="flex justify-between">
+            <p class="text-xl mb-4 ">Dashboard</p>
+            <a href="/src/views/views_admin/AdminDash.php" class=""><span class="text-blue-700">Home</span>/Dashboard</a>
+
         </div>
 
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido <br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
+        <?php
+       // var_dump($_SESSION["user-data"][0]["NOMBRE"]);
+         
+        ?>
     </div>
 </body>
 

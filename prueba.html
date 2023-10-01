@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Desplegable con Logout</title>
+    <style>
+        /* Añade algún estilo si es necesario */
+        #menu {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menú desplegable -->
+<div id="menu">
+    <label for="opciones">Selecciona una opción:</label>
+    <select name="opciones" id="opciones" onchange="seleccionarOpcion()">
+        <option value="opcion1">Opción 1</option>
+        <option value="opcion2">Opción 2</option>
+        <option value="logout">Logout</option>
+    </select>
+</div>
+
+<script>
+    // Función para manejar la selección de opciones
+    function seleccionarOpcion() {
+        var seleccion = document.getElementById("opciones").value;
+
+        // Verificar la opción seleccionada
+        if (seleccion === "logout") {
+            // Aquí puedes ejecutar la acción de logout, redireccionar, etc.
+            alert("¡Has cerrado sesión!");
+            // Aquí puedes redirigir a la página de inicio de sesión o realizar otras acciones necesarias.
+        } else {
+            // Otras acciones según las demás opciones
+            // Puedes agregar más casos según tus necesidades.
+        }
+    }
+</script>
+
+</body>
+</html>
