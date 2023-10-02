@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION["user-data"])) {
+  header("location: /src/views/Logout.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,22 +15,16 @@
       href="node_modules/@fortawesome/fontawesome-free/css/all.min.css"
     />
     <link rel="stylesheet" href="/dist/output.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://kit.fontawesome.com/6838e0d0bd.js"
-      crossorigin="anonymous"
-    ></script>
     <title>Alum-Page</title>
   </head>
 
   <body class="bg-blue-100 flex flex-col">
     <div class="bg-white h-12 ml-48">
       home
-      <select name="ciudades" id="ciudades" class="ml-[85%] w-28">
-        <option >[name]</option>
-        <option value="1">Perfil</option>
-        <option value="2">logout</option>
-      </select>
+      <select class="ml-[85%]" id="logout" onchange="logout()">
+            <option value="1"><?=$_SESSION["user-data"][0]["NOMBRE"]?></option>
+            <option value="logout">logout</option>
+        </select>
     
     </div>
     <div
@@ -36,12 +37,13 @@
           class="rounded-full h-10 w-10 ml-2 mt-[-100px]"
         />
         <span class="text-white ml-5 mt-[-100px]">Universidad</span>
+
       </div>
       <div
         class="text-white border-b-2 border-b-blue-700 h-20 flex justify-center flex-col"
       >
         <span class="ml-5 text-xl">Alumno</span>
-        <h3 class="ml-5">[Name]</h3>
+        <h3 class="ml-5"><?=$_SESSION["user-data"][0]["NOMBRE"]?></h3>
       </div>
       <div class="pt-5">
         <h2 class="text-center mb-4 text-white text-sm">Menu Alumno</h2>
@@ -79,5 +81,8 @@
         izquierda
       </p>
     </div>
+    <script src="/src/models/logout.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <script src="https://kit.fontawesome.com/6838e0d0bd.js"crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,5 +1,21 @@
+
 let dataTable;
 let dataTableInicializada = false; //para reflescar la table y poder destruirla
+
+//logica para la edición
+function editar(id) {
+  //console.log("este es el data:" + id);
+  window.location.href = `/src/views/views_admin/AlumnoEditar.php?id=${id}`;
+
+  // Abre el modal de editar
+  //$('#editarModal').modal('show');
+}
+  
+  function eliminar(id) {
+    // Lógica para eliminar según el ID
+    alert("Eliminar elemento con ID: "+ id);si 
+  } 
+
 
 // genera los cambios opcionales por parte del usuario
 const dataTableOptions = {
@@ -10,7 +26,7 @@ const dataTableOptions = {
     //define los valores de la columna
     { className: "centered", targets: [4, 5, 6] }, // los targes comienzan con 0 donde cada numero es una columna
     { orderable: false, targets: [6, 7] }, //quitamos la frechitas de ordenamiento en las columnas que queremos
-    //{width:valor targets:[columnas]} define el ancho manual de las columnas
+    {width:"20px", targets:[6]}, //define el ancho manual de las columnas
     //searchable:false, targets:[columna a buscar] define el parametro de busqueda a una sola columna
   ],
   pageLength: 6, //muestra un max de 5 registro por pagina
@@ -63,11 +79,14 @@ const list = async () => {
                 <td>${data.NACIMIENTO} </td>
                 <td><i class="fa-solid fa-check" style="color:green;"></i> </td>
                 <td>
-                <button class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pencil"></i><button/>
-                <button class="btn btn-sm btn-danger ml-1"><i class="fa-solid fa-trash-can"></i><button/>
+                <button class="btn btn-sm btn-primary mr-1" id="openModalBtn" onclick="editar(${data.ID})"><i class="fa-solid fa-pencil"></i></button>
+                <button class="btn btn-sm btn-danger ml-1" onclick="eliminar(${data.ID})"><i class="fa-solid fa-trash-can"></i></button>
                 </td>
             </tr>`;
     });
+// Agrega el contenido al elemento con el ID "tableBody"
+document.getElementById("tableBody").innerHTML = content;
+
     //pinta en el la tabla del html los datos iterados desde el servidor
     tableBody.innerHTML = content;
   } catch (ex) {

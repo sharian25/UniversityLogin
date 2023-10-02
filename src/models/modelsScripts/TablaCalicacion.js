@@ -1,0 +1,1 @@
+alert("estas en la tabla de clificaciones");

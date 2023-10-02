@@ -65,7 +65,7 @@ if ($postData["email"] == "") {
             }
         }
 
-        
+
         $declaration = $pdo->prepare("SELECT * FROM administrador WHERE CORREO = :mail");
         $declaration->bindParam(':mail', $postData['email'], PDO::PARAM_STR);
         $declaration->execute();
@@ -77,20 +77,19 @@ if ($postData["email"] == "") {
                 session_start();
                 $_SESSION["user-data"] = $results;
                 header("location: /src/views/views_admin/AdminDash.php");
-            } 
-            elseif (password_verify($postData["pass"], $result["PASS"])) {
+            } elseif (password_verify($postData["pass"], $result["PASS"])) {
                 session_start();
                 $_SESSION["user_data"] = $results;
                 header("location: /src/views/views_admin/AdminDash.php");
-            } 
-            else {
+            } else {
                 $_SESSION["nonyes"] = " <p style ='color:red;'>No es la contraseña</p> ";
                 header("location: /index.php");
             }
-        } /* else { //esta parte del codigo no permite que los usuarios entren
+        }  /* else { //esta parte del codigo no permite que los usuarios entren
+            session_start();
             $_SESSION["nonyes"] = " <p style ='color:red;'>Correo no registrado</p> ";
             header("location: /index.php");
-        } */
+        }  */
 
         //si ahy un erro aqui muestra el codigo
     } catch (PDOException $e) {

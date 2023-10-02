@@ -30,7 +30,6 @@
                     echo ($_SESSION["nonyes"]);
                 unset($_SESSION["nonyes"]);
                 }
-                
                 ?>
                 <button type="submit" class=" bg-[#0080f8] text-white h-10 w-20 rounded ml-[270px] ">Ingresar</button>
             </form>

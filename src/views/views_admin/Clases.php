@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION["user-data"])) {
+  header("location: /src/views/Logout.php");
+  exit();
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +22,10 @@ session_start();
 <body class="bg-blue-100 flex flex-col">
   <div class="bg-white h-12 ml-48 flex">
     home
-    <select name="ciudades" id="ciudades" class="ml-[85%]">
-      <option value="1"><?=$_SESSION["user-data"][0]["NOMBRE"]?></option>
-      <option>Logout</option>
-    </select>
+    <select class="ml-[85%]" id="logout" onchange="logout()">
+            <option value="1"><?=$_SESSION["user-data"][0]["NOMBRE"]?></option>
+            <option value="logout">logout</option>
+        </select>
   </div>
   <div class="h-screen w-48 fixed bg-blue-900 pt-20 flex flex-col justify-normal">
     <div class="border-b-2 border-b-blue-700 flex items-center pb-[-50px]">

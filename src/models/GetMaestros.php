@@ -7,7 +7,7 @@ $consulta = $pdo->query("SELECT * FROM maestros");
 //pasamos la consulta a un arreglo
 $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
 //guardamos el arreglo en una variable se sessión para uso futuro
-$_SESSION["Alumnos"] = $resultados;
+$_SESSION["maestros"] = $resultados;
 //var_dump($_SESSION);
 
 // Devolver los datos en formato JSON
