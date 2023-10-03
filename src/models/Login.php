@@ -52,12 +52,13 @@ if ($postData["email"] == "") {
 
         if ($declaration->rowCount() == 1) {
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
+            //var_dump($results);
 
             if ($results[0]["PASS"] === $postData["pass"]) {
                 session_start();
                 $_SESSION["user-data"] = $results;
                 header("location: /src/views/views_Masters/DashMasters.php");
-            } elseif (password_verify($postData["pass"], $result["PASS"])) {
+            } elseif (password_verify($postData["pass"], $results[0]["PASS"])) {
                 session_start();
                 $_SESSION["user_data"] = $results;
                 header("location: /src/views/views_Masters/DashMasters.php");
@@ -79,7 +80,7 @@ if ($postData["email"] == "") {
                 session_start();
                 $_SESSION["user-data"] = $results;
                 header("location: /src/views/views_admin/AdminDash.php");
-            } elseif (password_verify($postData["pass"], $result["PASS"])) {
+            } elseif (password_verify($postData["pass"], $results[0]["PASS"])) {
                 session_start();
                 $_SESSION["user_data"] = $results;
                 header("location: /src/views/views_admin/AdminDash.php");
