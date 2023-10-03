@@ -1,9 +1,9 @@
 <?php
- session_start();
+session_start();
 if (!isset($_SESSION["user-data"])) {
     header("location: /src/views/Logout.php");
     exit();
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ if (!isset($_SESSION["user-data"])) {
     <div class="bg-white h-12 ml-48 flex">
         home
         <select class="ml-[85%]" id="logout" onchange="logout()">
-            <option value="1"><?=$_SESSION["user-data"][0]["NOMBRE"]?></option>
+            <option value="1"><?= $_SESSION["user-data"][0]["NOMBRE"] ?></option>
             <option value="logout">logout</option>
         </select>
     </div>
@@ -34,7 +34,7 @@ if (!isset($_SESSION["user-data"])) {
             <span class="text-white ml-5 mt-[-100px]">Universidad</span>
         </div>
         <div class="text-white border-b-2 border-b-blue-700 h-20 flex justify-center flex-col">
-            <h3 class="ml-5"><?=$_SESSION["user-data"][0]["NOMBRE"]?></h3>
+            <h3 class="ml-5"><?= $_SESSION["user-data"][0]["NOMBRE"] ?></h3>
             <span class="ml-5 text-xs">Administrador</span>
         </div>
         <div class="pt-5">
@@ -57,10 +57,7 @@ if (!isset($_SESSION["user-data"])) {
 
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido <br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
-        <?php
-       // var_dump($_SESSION["user-data"][0]["NOMBRE"]);
-         
-        ?>
+
     </div>
 </body>
 

@@ -14,6 +14,7 @@
     <main class="bg-[#fff4d4] h-screen flex flex-col justify-center items-center">
         <img src="/src/img/logo.jpg" alt="logo universidad" class="h-48 w-44 pb-5">
         <h1 class="font-bold text-4xl text-yellow-700">NO has inicado una Sessión</h1>
+        <a href="/index.php" class="p-5 text-yellow-700">Home</a>
     </main>
 </body>
 

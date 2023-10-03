@@ -1,6 +1,21 @@
 let dataTable;
 let dataTableInicializada = false; //para reflescar la table y poder destruirla
 
+//logica para la edición
+function editar(id) {
+  //console.log("este es el data:" + id);
+  window.location.href = `/src/views/views_admin/Maestros/MaestroEditar.php?id=${id}`;
+
+  // Abre el modal de editar
+  //$('#editarModal').modal('show');
+}
+  
+  function eliminar(id) {
+    // Lógica para eliminar según el ID
+   // alert("Eliminar elemento con ID: "+ id);
+ window.location.href = `/src/models/Create_Edit/EliminarMaestro.php?id=${id}`; 
+  } 
+
 // genera los cambios opcionales por parte del usuario
 const dataTableOptions = {
   //scrollx:"valor-px", si hay muchas columnas muestra una barra de desplazamiento en x
@@ -63,8 +78,8 @@ const list = async () => {
                 <td>${data.NACIMIENTO} </td>
                 <td><i class="fa-solid fa-check" style="color:green;"></i> </td>
                 <td>
-                <button class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pencil"></i><button/>
-                <button class="btn btn-sm btn-danger ml-1"><i class="fa-solid fa-trash-can"></i><button/>
+                <button class="btn btn-sm btn-primary mr-1" id="openModalBtn" onclick="editar(${data.ID_MAESTROS})"><i class="fa-solid fa-pencil"></i></button>
+                <button class="btn btn-sm btn-danger ml-1" onclick="eliminar(${data.ID_MAESTROS})"><i class="fa-solid fa-trash-can"></i></button>
                 </td>
             </tr>`;
     });

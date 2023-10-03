@@ -42,6 +42,8 @@ if (!isset($_SESSION["user-data"])) {
                 <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/MaestrosDash.php" class="block text-white"><i class="fa-solid fa-chalkboard-user"></i><span class="m-3">Maestros</span> </a></li>
                 <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/AlumnosDash.php" class="block text-white"><i class="fa-solid fa-graduation-cap"></i><span class="m-3">Alumnos</span> </a></li>
                 <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/Clases.php" class="block text-white"><i class="fa-solid fa-chalkboard"></i><span class="m-3">Clases</span> </a></li>
+                <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/AlumnoCrear.php" class="block text-white mt-4"><i class="fa-solid fa-user-plus"></i><span class="m-3">Añadir Estudiante</span> </a></li>
+
             </ul>
         </div>
 
@@ -76,29 +78,6 @@ if (!isset($_SESSION["user-data"])) {
             </div>
         </div>
     </div>
-    <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
-  <h1>Esto es un modal</h1>
-</div>
-
-<button id="openModalBtn">Abrir Modal</button>
-    <div id="editarModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModalBtn">&times;</span>
-            <h2>Este es un modal</h2>
-            <p>Contenido del modal...</p>
-             <fieldset>
-                <legend>
-                    ejemplo
-                </legend>
-                <label for="">
-                    ingresa un valor
-                </label>
-                <input type="text">
-                <button>Click me</button>
-             </fieldset>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/6838e0d0bd.js" crossorigin="anonymous"></script>
@@ -107,7 +86,5 @@ if (!isset($_SESSION["user-data"])) {
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="/src/models/modelsScripts/tablaAlumnos.js"></script>
-    <!-- <script src="/src/models/Create_Edit/CrearModal.js"></script> -->
 </body>
-
 </html>

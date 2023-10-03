@@ -13,7 +13,8 @@ function editar(id) {
   
   function eliminar(id) {
     // Lógica para eliminar según el ID
-    alert("Eliminar elemento con ID: "+ id);si 
+   // alert("Eliminar elemento con ID: "+ id);
+ window.location.href = `/src/models/Create_Edit/EliminarAlumno.php?id=${id}`; 
   } 
 
 

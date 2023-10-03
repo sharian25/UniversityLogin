@@ -2,6 +2,7 @@
 session_start();
 //se verifica si la variable de session trae datos si de lo contrario estará vacia
 $postData = isset($_SESSION["post_data"]) ? $_SESSION["post_data"] : [];
+//var_dump($postData);
 //si no existe correo se avisará
 if ($postData["email"] == "") {
     $_SESSION["nonyes"] = "<P style ='color:red;'> falta el correo </p>";
@@ -24,6 +25,7 @@ if ($postData["email"] == "") {
             //se convierten los datos de la consulta en un arreglo asociativo
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
             //valida si la contraseña guardada es la misma digitada (sin has)
+            //var_dump($results);
 
             if ($results[0]["PASS"] === $postData["pass"]) {
                 //iniciamos sessión movemos los datos de $resuld a una variable de sessión
@@ -31,9 +33,9 @@ if ($postData["email"] == "") {
                 $_SESSION["user-data"] = $results;
                 //se envia la vista principal
                 header("location: /src/views/views_alumno/DashAlum.php");
-            } elseif (password_verify($postData["pass"], $result["PASS"])) {
+            } if (password_verify($postData["pass"], $results[0]["PASS"])) {
                 session_start();
-                $_SESSION["user_data"] = $result; //todo el resultado de la base de dato se guarda en la variable de sesión
+                $_SESSION["user_data"] = $results; //todo el resultado de la base de dato se guarda en la variable de sesión
                 header("location: /src/views/views_alumno/DashAlum.php"); //se envia a la pagina donde estan los datos del usuario de la base de datos
             } else {
                 //se envia mensaje por si la contraseña no existe en la base de datos
@@ -46,10 +48,10 @@ if ($postData["email"] == "") {
         $declaration = $pdo->prepare("SELECT * FROM maestros WHERE CORREO = :mail");
         $declaration->bindParam(':mail', $postData['email'], PDO::PARAM_STR);
         $declaration->execute();
+        
 
         if ($declaration->rowCount() == 1) {
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
-
 
             if ($results[0]["PASS"] === $postData["pass"]) {
                 session_start();

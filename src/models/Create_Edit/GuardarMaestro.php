@@ -18,14 +18,14 @@ if (empty($nombre) || empty($dni) || empty($email) || empty($dir) || empty($phon
     require_once($_SERVER["DOCUMENT_ROOT"]. "/config/database.php"); //conexión a la base de datos
 
    // Suponiendo que ya tienes la conexión PDO establecida en $pdo
-$stmt = $pdo->prepare("UPDATE alumnos SET   
+$stmt = $pdo->prepare("UPDATE maestros SET   
 DNI = :dni, 
 NOMBRE = :nombre,
 CORREO = :email,
 DIRECCION = :dir,
 NACIMIENTO = :fecha,
 TELEFONO = :phone
-WHERE ID = :id");
+WHERE ID_MAESTROS = :id");
 
 // Bind de los parámetros
 $stmt->bindParam(':dni', $dni);
@@ -41,7 +41,7 @@ $stmt->execute();
 
     }
     if($stmt) {
-        $sql = "SELECT * FROM alumnos WHERE ID = $id"; //se hace una nueva consulta en un ID
+        $sql = "SELECT * FROM maestros WHERE ID = $id"; //se hace una nueva consulta en un ID
         $stmt = $pdo->prepare($sql); //se traen los valores ya actualizados
         $stmt->bindParam(':id', $id);
         
@@ -53,6 +53,6 @@ $stmt->execute();
                 $_SESSION["user_data"] = $fila; 
                     header("location: /src/views/views_admin/AlumnosDash.php");
 }else {
-    header("location: /src/views/views_admin/AlumnosDash.php");
+    header("location: /src/views/views_admin/MaestrosDash.php");
    $_SESSION["vicio"] = "<p style ='color:red;'>'Error al actualizar  La información personal'</p>";
 } } }

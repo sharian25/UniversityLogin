@@ -44,6 +44,8 @@ if (!isset($_SESSION["user-data"])) {
                 <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/MaestrosDash.php" class="block text-white"><i class="fa-solid fa-chalkboard-user"></i><span class="m-3">Maestros</span> </a></li>
                 <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/AlumnosDash.php"  class="block text-white"><i class="fa-solid fa-graduation-cap"></i><span class="m-3">Alumnos</span> </a></li>
                 <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin/Clases.php"       class="block text-white"><i class="fa-solid fa-chalkboard"></i><span class="m-3">Clases</span> </a></li>
+                <li class="mb-2 hover:bg-sky-700"><a href="/src/views/views_admin//Maestros/MaestroCrear.php" class="block text-white mt-4"><i class="fa-solid fa-user-plus"></i><span class="m-3">Añadir Maestro</span> </a></li>
+
             </ul>
         </div>
 
@@ -74,11 +76,8 @@ if (!isset($_SESSION["user-data"])) {
                     </thead>
                     <tbody id="tableBody"></tbody>
                 </table>
-
             </div>
-
         </div>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
