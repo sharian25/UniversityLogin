@@ -1,6 +1,22 @@
 let dataTable;
 let dataTableInicializada = false; //para reflescar la table y poder destruirla
 
+
+//logica para la edición
+function editar(id) {
+ //alert("Editar este elemento:" + id);
+  window.location.href = `/src/views/views_admin/Clases/ClaseEditar.php?id=${id}`;
+
+  // Abre el modal de editar
+  //$('#editarModal').modal('show');
+} 
+  function eliminar(id) {
+    // Lógica para eliminar según el ID
+    //alert("Eliminar elemento con ID: "+ id);
+ window.location.href = `/src/models/Create_Edit/EliminarClase.php?id=${id}`; 
+  } 
+
+
 // genera los cambios opcionales por parte del usuario
 const dataTableOptions = {
   //scrollx:"valor-px", si hay muchas columnas muestra una barra de desplazamiento en x
@@ -60,19 +76,23 @@ const list = async () => {
                 <td>${data.INSCRITOS} </td>
                 <td><i class="fa-solid fa-check" style="color:green;"></i> </td>
                 <td>
-                <button class="btn btn-sm btn-primary mr-1"><i class="fa-solid fa-pencil"></i><button/>
-                <button class="btn btn-sm btn-danger ml-1"><i class="fa-solid fa-trash-can"></i><button/>
+                <button class="btn btn-sm btn-primary mr-1" id="openModalBtn" onclick="editar(${data.ID_CLASES})"><i class="fa-solid fa-pencil"></i></button>
+                <button class="btn btn-sm btn-danger ml-1" onclick="eliminar(${data.ID_CLASES})"><i class="fa-solid fa-trash-can"></i></button>
                 </td>
             </tr>`;
     });
-    //pinta en el la tabla del html los datos iterados desde el servidor
-    tableBody.innerHTML = content;
-  } catch (ex) {
-    //muestra una exepción en caso de haber un fallo desde el try
-    alert(ex);
-  }
-};
-// inicializa la todo el proceso,
-window.addEventListener("load", async () => {
-  await initDataTable();
-});
+    // Agrega el contenido al elemento con el ID "tableBody"
+    document.getElementById("tableBody").innerHTML = content;
+    
+        //pinta en el la tabla del html los datos iterados desde el servidor
+        tableBody.innerHTML = content;
+      } catch (ex) {
+        //muestra una exepción en caso de haber un fallo desde el try
+        alert(ex);
+      }
+    };
+    // inicializa la todo el proceso,
+    window.addEventListener("load", async () => {
+      await initDataTable();
+    });
+    

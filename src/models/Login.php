@@ -25,22 +25,24 @@ if ($postData["email"] == "") {
             //se convierten los datos de la consulta en un arreglo asociativo
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
             //valida si la contraseña guardada es la misma digitada (sin has)
-            //var_dump($results);
+            var_dump($results);
 
             if ($results[0]["PASS"] === $postData["pass"]) {
                 //iniciamos sessión movemos los datos de $resuld a una variable de sessión
-                session_start();
                 $_SESSION["user-data"] = $results;
                 //se envia la vista principal
+              echo"debes cambiar tu contraseña";
                 header("location: /src/views/views_alumno/DashAlum.php");
-            } if (password_verify($postData["pass"], $results[0]["PASS"])) {
-                session_start();
+            } elseif (password_verify($postData["pass"], $results[0]["PASS"])) {
                 $_SESSION["user_data"] = $results; //todo el resultado de la base de dato se guarda en la variable de sesión
-                header("location: /src/views/views_alumno/DashAlum.php"); //se envia a la pagina donde estan los datos del usuario de la base de datos
+              echo "has entrado con hash";
+               //se envia a la pagina donde estan los datos del usuario de la base de datos
+               header("location: /src/views/views_alumno/DashAlum.php");
             } else {
                 //se envia mensaje por si la contraseña no existe en la base de datos
                 $_SESSION["nonyes"] = " <p style ='color:red;'>No es la contraseña</p> ";
-                header("location: /index.php");
+                var_dump($results);
+                //header("location: /index.php");
             }
         }
 
@@ -54,11 +56,11 @@ if ($postData["email"] == "") {
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
             //var_dump($results);
 
-            if ($results[0]["PASS"] === $postData["pass"]) {
+            /* if ($results[0]["PASS"] === $postData["pass"]) {
                 session_start();
                 $_SESSION["user-data"] = $results;
                 header("location: /src/views/views_Masters/DashMasters.php");
-            } elseif (password_verify($postData["pass"], $results[0]["PASS"])) {
+            } */ if (password_verify($postData["pass"], $results[0]["PASS"])) {
                 session_start();
                 $_SESSION["user_data"] = $results;
                 header("location: /src/views/views_Masters/DashMasters.php");

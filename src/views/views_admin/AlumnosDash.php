@@ -57,6 +57,12 @@ if (!isset($_SESSION["user-data"])) {
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido <br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
     </div>
+    <?php
+    if (isset($_SESSION["vacio"])){
+        echo ($_SESSION["vacio"]);
+        unset($_SESSION["vacio"]);
+    };
+    ?>
     <div class="content ml-52">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-lx-12">

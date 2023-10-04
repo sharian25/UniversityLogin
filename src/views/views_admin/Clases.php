@@ -55,6 +55,10 @@ if (!isset($_SESSION["user-data"])) {
           <a href="/src/views/views_admin/Clases.php" class="block text-white"><i class="fa-solid fa-chalkboard"></i><span class="m-3">Clases</span>
           </a>
         </li>
+        <li class="mb-2 hover:bg-sky-700">
+          <a href="/src/views/views_admin/Clases/ClaseCrear.php" class="block text-white mt-3"><i class="fa-solid fa-file-circle-plus fa-beat"></i></i><span class="m-3">Añadir Clases</span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -67,6 +71,13 @@ if (!isset($_SESSION["user-data"])) {
     <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded mb-7"> Bienvenido <br />
       Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda
     </p>
+    <?php
+                    
+                if (isset($_SESSION["vacio"])) {
+                    echo ($_SESSION["vacio"]);
+                unset($_SESSION["vacio"]);
+                };
+              ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-lx-12">

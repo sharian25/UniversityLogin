@@ -52,43 +52,22 @@ $id_buscado = $_SESSION["id"]-1;
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido<br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
         <main class="h-screen flex justify-center flex-col items-center">
-            <div class="h-[90%] w-[50%] bg-blue-200  rounded-lg">
-                <h2 class="text-center fong-bold text-2xl p-5" >Edita al maestro <?=($_SESSION["maestros"][$id_buscado]["NOMBRE"])?></h2>
-                <form action="/src/models/Create_Edit/GuardarMaestro.php" method="post" class="flex-col flex items-center">
-                    <label class="font-bold ml-5">DNI
-                        <input name="dni" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["DNI"])?>" class="w-64 h-8 m-5">
+            <div class="h-[55%] w-[30%] bg-blue-200  rounded-lg">
+              
+            <h2 class="text-center fong-bold text-2xl p-5" >Edita la clase <?=($_SESSION["clases"][$id_buscado]["CLASE"])?></h2>
+                <form action="/src/models/Create_Edit/GuardarClase.php" method="post" class="flex-col flex items-center">
+                    <label class="font-bold ml-5">CLASE
+                        <input name="clase" type="text" placeholder="<?=($_SESSION["clases"][$id_buscado]["CLASE"])?>" class="w-64 h-8 m-5">
                     </label>
-                    <label class="font-bold ml-5">NOMBRE
-                        <input  name="nombre" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["NOMBRE"])?>" class="w-64 h-8 m-5">
+                    <label class="font-bold ml-5 p-8">CLASE
+                        <span><?=($_SESSION["clases"][$id_buscado]["MAESTRO"])?></span>
                     </label>
-                    <label class="font-bold ml-5">CORREO
-                        <input name="email" type="email" placeholder="<?=($_SESSION["maestros"][$id_buscado]["CORREO"]);?>" class="w-64 h-8 m-5">
-                    </label>
-                    <label class="font-bold ml-5">DIRECCIÓN
-                        <input name="dir" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["DIRECCION"]);?>" class="w-64 h-8 m-5">
-                    </label>
-                    <label class="font-bold ml-5">TELÉFONO
-                        <input name="phone" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["TELEFONO"]);?>" class="w-64 h-8 m-5">
-                    </label>
-                    <label class="font-bold ml-5">FECHA-NAC
-                        <input name="fecha" type="date" placeholder=" <?=($_SESSION["maestros"][$id_buscado]["NACIMIENTO"]);?>" class="w-64 h-8 m-5">
-                    </label>
-                    <label class="font-bold ml-5">Rol
-                    <select name="rol">
-                            <option value="1">Administrador</option>
-                            <option value="2">Maestro</option>
-                            <option value="3">Alumno</option>
-                        </select>
+                    <label class="font-bold ml-5 p-8">INSCRITOS
+                        <span><?=($_SESSION["clases"][$id_buscado]["INSCRITOS"]);?></span>
                     </label>
                     <button type="submit" class=" mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                         Guardar
                     </button>
-                    <?php
-                if (isset($_SESSION["vacio"])) {
-                    echo ($_SESSION["vacio"]);
-                unset($_SESSION["vacio"]);
-                }
-              ?>
                     
 
                 </form>
@@ -97,6 +76,7 @@ $id_buscado = $_SESSION["id"]-1;
     </div>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/src/models/logout.js"></script>
+    <SCRipt src="/src/models/modelsScripts/tablaMaterias.js"></SCRipt>
 </body>
 
 </html>

@@ -65,40 +65,16 @@ if (!isset($_SESSION["user-data"])) {
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido <br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
 
-        <main class="h-screen flex justify-center flex-col items-center">
-            <div class="h-[90%] w-[50%] bg-blue-200  rounded-lg">
-                <h2 class="text-center fong-bold text-2xl p-5">Añadir Maestro</h2>
-                <form action="/src/models/Create_Edit/CrearMaestro.php" method="post" class="flex-col flex items-center">
-                    <label class="font-bold ml-5 p-3">DNI
-                        <input name="dni" type="text" placeholder="Identificación" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-5 p-3">NOMBRE
-                        <input name="nombre" type="text" placeholder="Nombres y Apellidos" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-5 p-3">CORREO
-                        <input name="email" type="email" placeholder="Correo Electronico" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-5 p-3">CONTRASEÑA
-                        <input name="pass" type="password" placeholder="" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-5 p-3">DIRECCIÓN
-                        <input name="dir" type="text" placeholder="Domicilio" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-5 p-3">TELÉFONO
-                        <input name="phone" type="text" placeholder="Número Teléfonico" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-5 p-3">FECHA-NAC
-                        <input name="fecha" type="date" placeholder="" class="w-64 h-8 ml-[50%]">
-                    </label>
-                    <label class="font-bold ml-[50%] p-3">PERMISOS
-                        <select name="rol">
-                            <option value="1">Administrador</option>
-                            <option value="2">Maestro</option>
-                            <option value="3">Alumno</option>
-                        </select>
+        <main class="h-screen flex flex-col items-center pt-8">
+            <div class="h-[35%] w-[40%] bg-blue-200  rounded-lg shadow-2xl">
+                <h2 class="text-center fong-bold text-2xl p-5">Añadir Clase</h2>
+                <form action="/src/models/Create_Edit/CrearClase.php" method="post" class="flex-col flex items-center">
+                    <label class="font-bold ml-5 p-3 w-96">CLASE
+                        <input name="clase" type="text" placeholder="Introduce la nueva clase" class="w-64 h-8 ml-5 
+                        p-2 border border-gray-300 rounded-md">
                     </label>
                     <button type="submit"
-                        class=" mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                        class=" mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded ">
                         Guardar
                     </button>
                     <?php

@@ -10,8 +10,9 @@ $dir=$_POST["dir"];
 $phone=$_POST["phone"];
 $fecha=$_POST["fecha"];
 $id=$_SESSION["id"];
+$rol= $_POST["rol"];
 
-if (empty($nombre) || empty($dni) || empty($email) || empty($dir) || empty($phone)||empty($fecha)) {
+if (empty($rol) || empty($nombre) || empty($dni) || empty($email) || empty($dir) || empty($phone)||empty($fecha)) {
     $_SESSION["vacio"] = "<P style ='color: red;'> Uno o más campos están vacíos <br> Por favor, completa todos los campos. </p>";
     header("location: /src/views/views_admin/AlumnoEditar.php");
 }else {
@@ -24,7 +25,8 @@ NOMBRE = :nombre,
 CORREO = :email,
 DIRECCION = :dir,
 NACIMIENTO = :fecha,
-TELEFONO = :phone
+TELEFONO = :phone,
+ID_ROL = :rol
 WHERE ID_MAESTROS = :id");
 
 // Bind de los parámetros
@@ -35,6 +37,8 @@ $stmt->bindParam(':dir', $dir);
 $stmt->bindParam(':fecha', $fecha);
 $stmt->bindParam(':phone', $phone);
 $stmt->bindParam(':id', $id);
+$stmt->bindParam(':rol', $rol);
+
 
 // Ejecutar la consulta
 $stmt->execute();
