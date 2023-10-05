@@ -58,7 +58,7 @@ if (!isset($_SESSION["user-data"])) {
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido <br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
     </div>
-    <div class="container ml-52">
+    <div class="content ml-52">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-lx-12">
                 <table id="datatable" class="table table-striped">

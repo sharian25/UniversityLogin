@@ -56,24 +56,24 @@ $id_buscado = $_SESSION["id"]-1;
                 <h2 class="text-center fong-bold text-2xl p-5" >Edita al maestro <?=($_SESSION["maestros"][$id_buscado]["NOMBRE"])?></h2>
                 <form action="/src/models/Create_Edit/GuardarMaestro.php" method="post" class="flex-col flex items-center">
                     <label class="font-bold ml-5">DNI
-                        <input name="dni" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["DNI"])?>" class="w-64 h-8 m-5">
+                        <input name="dni" type="text" value="<?=($_SESSION["maestros"][$id_buscado]["DNI"])?>" class="w-64 h-8 m-5">
                     </label>
                     <label class="font-bold ml-5">NOMBRE
-                        <input  name="nombre" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["NOMBRE"])?>" class="w-64 h-8 m-5">
+                        <input  name="nombre" type="text" value="<?=($_SESSION["maestros"][$id_buscado]["NOMBRE"])?>" class="w-64 h-8 m-5">
                     </label>
                     <label class="font-bold ml-5">CORREO
                         <input name="email" type="email" placeholder="<?=($_SESSION["maestros"][$id_buscado]["CORREO"]);?>" class="w-64 h-8 m-5">
                     </label>
                     <label class="font-bold ml-5">DIRECCIÓN
-                        <input name="dir" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["DIRECCION"]);?>" class="w-64 h-8 m-5">
+                        <input name="dir" type="text" value="<?=($_SESSION["maestros"][$id_buscado]["DIRECCION"]);?>" class="w-64 h-8 m-5">
                     </label>
                     <label class="font-bold ml-5">TELÉFONO
-                        <input name="phone" type="text" placeholder="<?=($_SESSION["maestros"][$id_buscado]["TELEFONO"]);?>" class="w-64 h-8 m-5">
+                        <input name="phone" type="text" value="<?=($_SESSION["maestros"][$id_buscado]["TELEFONO"]);?>" class="w-64 h-8 m-5">
                     </label>
                     <label class="font-bold ml-5">FECHA-NAC
                         <input name="fecha" type="date" placeholder=" <?=($_SESSION["maestros"][$id_buscado]["NACIMIENTO"]);?>" class="w-64 h-8 m-5">
                     </label>
-                    <label class="font-bold ml-5">Rol
+                    <label class="font-bold ml-5">ROL
                     <select name="rol">
                             <option value="1">Administrador</option>
                             <option value="2">Maestro</option>

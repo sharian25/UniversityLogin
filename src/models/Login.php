@@ -4,6 +4,7 @@ session_start();
 $postData = isset($_SESSION["post_data"]) ? $_SESSION["post_data"] : [];
 //var_dump($postData);
 //si no existe correo se avisará
+$hash = password_hash($postData["pass"], PASSWORD_DEFAULT);
 if ($postData["email"] == "") {
     $_SESSION["nonyes"] = "<P style ='color:red;'> falta el correo </p>";
     header("location: /index.php");
@@ -24,80 +25,148 @@ if ($postData["email"] == "") {
         if ($declaration->rowCount() == 1) {
             //se convierten los datos de la consulta en un arreglo asociativo
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
-            //valida si la contraseña guardada es la misma digitada (sin has)
+            //verificamos permisos al que pertenece el correo
+            //administrador
             var_dump($results);
 
-            if ($results[0]["PASS"] === $postData["pass"]) {
-                //iniciamos sessión movemos los datos de $resuld a una variable de sessión
+                //admin
+            if ($results[0]["ID_ROL"] == 1) {
+                if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                    $_SESSION["user-data"] = $results;
+                echo "soy admin";
+               header("location: /src/views/views_admin/AdminDash.php");
+                } else {
+                header("location: /index.php");
+                $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                }
+                
+    
+                //Maestros   
+            } elseif ($results[0]["ID_ROL"] == 2) {
+                if (password_verify($postData["pass"], $results[0]["PASS"])) {
                 $_SESSION["user-data"] = $results;
-                //se envia la vista principal
-              echo"debes cambiar tu contraseña";
-                header("location: /src/views/views_alumno/DashAlum.php");
-            } elseif (password_verify($postData["pass"], $results[0]["PASS"])) {
-                $_SESSION["user_data"] = $results; //todo el resultado de la base de dato se guarda en la variable de sesión
-              echo "has entrado con hash";
-               //se envia a la pagina donde estan los datos del usuario de la base de datos
-               header("location: /src/views/views_alumno/DashAlum.php");
-            } else {
-                //se envia mensaje por si la contraseña no existe en la base de datos
-                $_SESSION["nonyes"] = " <p style ='color:red;'>No es la contraseña</p> ";
-                var_dump($results);
-                //header("location: /index.php");
+                //echo "soy master";
+                header("location: /src/views/views_Masters/DashMasters.php");
+                }else{
+                    header("location: /index.php");
+                    $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                }
+
+               //Alumnos 
+            } elseif ($results[0]["ID_ROL"] == 3) { 
+                if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                    $_SESSION["user-data"] = $results;
+              // echo "soy student";
+              header("location: /src/views/views_alumno/Dashalum.php");
+                } else {
+                    header("location: /index.php");
+                    $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                    
+                }
+                
+                
+               
             }
-        }
-
-
-        $declaration = $pdo->prepare("SELECT * FROM maestros WHERE CORREO = :mail");
-        $declaration->bindParam(':mail', $postData['email'], PDO::PARAM_STR);
-        $declaration->execute();
+        } 
+                
         
 
+         $declaration = $pdo->prepare("SELECT * FROM maestros WHERE CORREO = :mail");
+        $declaration->bindParam(':mail', $postData['email'], PDO::PARAM_STR);
+        $declaration->execute();
         if ($declaration->rowCount() == 1) {
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
             //var_dump($results);
 
-            /* if ($results[0]["PASS"] === $postData["pass"]) {
-                session_start();
-                $_SESSION["user-data"] = $results;
-                header("location: /src/views/views_Masters/DashMasters.php");
-            } */ if (password_verify($postData["pass"], $results[0]["PASS"])) {
-                session_start();
-                $_SESSION["user_data"] = $results;
-                header("location: /src/views/views_Masters/DashMasters.php");
-            } else {
-                $_SESSION["nonyes"] = " <p style ='color:red;'>No es la contraseña</p> ";
-                header("location: /index.php");
-            }
-        }
+                 //admin
+                 if ($results[0]["ID_ROL"] == 1) {
+                    if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                        $_SESSION["user-data"] = $results;
+                    echo "soy admin";
+                   header("location: /src/views/views_admin/AdminDash.php");
+                    } else {
+                    header("location: /index.php");
+                    $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                    }
+                    
+        
+                    //Maestros   
+                } elseif ($results[0]["ID_ROL"] == 2) {
+                    if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                    $_SESSION["user-data"] = $results;
+                    //echo "soy master";
+                    header("location: /src/views/views_Masters/DashMasters.php");
+                    }else{
+                        header("location: /index.php");
+                        $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                    }
+    
+                   //Alumnos 
+                } elseif ($results[0]["ID_ROL"] == 3) { 
+                    if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                        $_SESSION["user-data"] = $results;
+                  // echo "soy student";
+                  header("location: /src/views/views_alumno/Dashalum.php");
+                    } else {
+                        header("location: /index.php");
+                        $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                        
+                    }
+                    
+                    
+                   
+                }
 
+        
 
-        $declaration = $pdo->prepare("SELECT * FROM administrador WHERE CORREO = :mail");
+        } 
+         $declaration = $pdo->prepare("SELECT * FROM administrador WHERE CORREO = :mail");
         $declaration->bindParam(':mail', $postData['email'], PDO::PARAM_STR);
         $declaration->execute();
-
         if ($declaration->rowCount() == 1) {
             $results = $declaration->fetchAll(PDO::FETCH_ASSOC);
+          // var_dump($results);
 
-            if ($results[0]["PASS"] === $postData["pass"]) {
-                session_start();
-                $_SESSION["user-data"] = $results;
-                header("location: /src/views/views_admin/AdminDash.php");
-            } elseif (password_verify($postData["pass"], $results[0]["PASS"])) {
-                session_start();
-                $_SESSION["user_data"] = $results;
-                header("location: /src/views/views_admin/AdminDash.php");
-            } else {
-                $_SESSION["nonyes"] = " <p style ='color:red;'>No es la contraseña</p> ";
-                header("location: /index.php");
-            }
-        }  /* else { //esta parte del codigo no permite que los usuarios entren
-            session_start();
-            $_SESSION["nonyes"] = " <p style ='color:red;'>Correo no registrado</p> ";
-            header("location: /index.php");
-        }  */
-
+                 //admin
+                 if ($results[0]["ID_ROL"] == 1) {
+                    if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                        $_SESSION["user-data"] = $results;
+                   // echo "soy admin";
+                   header("location: /src/views/views_admin/AdminDash.php");
+                    } else {
+                    header("location: /index.php");
+                    $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                    }
+                    
+        
+                    //Maestros   
+                } elseif ($results[0]["ID_ROL"] == 2) {
+                    if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                    $_SESSION["user-data"] = $results;
+                    //echo "soy master";
+                    header("location: /src/views/views_Masters/DashMasters.php");
+                    }else{
+                        header("location: /index.php");
+                        $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                    }
+    
+                   //Alumnos 
+                } elseif ($results[0]["ID_ROL"] == 3) { 
+                    if (password_verify($postData["pass"], $results[0]["PASS"])) {
+                        $_SESSION["user-data"] = $results;
+                  // echo "soy student";
+                  header("location: /src/views/views_alumno/Dashalum.php");
+                    } else {
+                        header("location: /index.php");
+                        $_SESSION["nonyes"] = " <p style ='color:red;'>Contraseña incorrecta</p> ";
+                        
+                    }
+                   
+                }
+            
+        } 
         //si ahy un erro aqui muestra el codigo
     } catch (PDOException $e) {
-        echo "Código de error: " . $e->getCode();
-    }
+        echo "No puedes iniciar Sesión por: " . $e->getCode();
+        }
 }

@@ -9,11 +9,17 @@ function editar(id) {
   // Abre el modal de editar
   //$('#editarModal').modal('show');
 }
-  
+
   function eliminar(id) {
     // Lógica para eliminar según el ID
    // alert("Eliminar elemento con ID: "+ id);
  window.location.href = `/src/models/Create_Edit/EliminarMaestro.php?id=${id}`; 
+  } 
+
+  function clases(id) {
+    // Lógica para eliminar según el ID
+   // alert("Eliminar elemento con ID: "+ id);
+ window.location.href = `/src/views/views_admin/Maestros/MaestroClase.php?id=${id}`; 
   } 
 
 // genera los cambios opcionales por parte del usuario
@@ -80,6 +86,7 @@ const list = async () => {
                 <td>
                 <button class="btn btn-sm btn-primary mr-1" id="openModalBtn" onclick="editar(${data.ID_MAESTROS})"><i class="fa-solid fa-pencil"></i></button>
                 <button class="btn btn-sm btn-danger ml-1" onclick="eliminar(${data.ID_MAESTROS})"><i class="fa-solid fa-trash-can"></i></button>
+                <button class="btn btn-sm btn-secondary ml-1" onclick="clases(${data.ID_MAESTROS})"><i class="fa-solid fa-folder-plus"></i></i></button>
                 </td>
             </tr>`;
     });

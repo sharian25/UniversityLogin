@@ -13,8 +13,7 @@ if (!isset($_SESSION["user-data"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/dist/output.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/6838e0d0bd.js" crossorigin="anonymous"></script>
+    
     <title>Permint-Page</title>
 </head>
 
@@ -57,6 +56,8 @@ if (!isset($_SESSION["user-data"])) {
         <p class="bg-white max-w-screen-sm h-14 text-sm p-2 rounded">Bienvenido <br>
             Selecciona la accion que quieras realizar en las pestañas del menu de la izquierda</p>
     </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/6838e0d0bd.js" crossorigin="anonymous"></script>
+    <script src="/src/models/logout.js"></script>
 </body>
-
 </html>
