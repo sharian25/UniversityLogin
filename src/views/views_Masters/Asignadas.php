@@ -100,7 +100,7 @@ $faltantes = $smtnt->fetchAll(PDO::FETCH_ASSOC);
             <thead>
               <tr>
                 <th class="border border-slate-300 ...">CLASES</th>
-                <th class="border border-slate-300 ...">ACCION</th>
+            
               </tr>
             </thead>
             <tbody>
@@ -110,10 +110,7 @@ $faltantes = $smtnt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                   <td class="border border-slate-300"><?= $inscrita["CLASE"] ?></td>
                   <td class="border border-slate-300">
-                    <form action="/src/models/Create_Edit/DesasignarClaseM.php" method="post">
-                      <input type="number" name="id_clases" hidden value="<?= $inscrita["ID_CLASES"] ?>">
-                      <button type="submit" class="bg-red-200">Retirar materia</button>
-                    </form>
+                    
                   </td>
                 </tr>
               <?php
