@@ -40,6 +40,10 @@ if (!isset($_SESSION["user-data"])) {
           <a href="/src/views/views_Masters/AlumnosCal.php" class="block text-white"><i class="fa-solid fa-graduation-cap"></i><span class="m-3">Alumnos</span>
           </a>
         </li>
+        <li class="mb-2 hover:bg-sky-700">
+          <a href="/src/views/views_Masters/Asignadas.php" class="block text-white"><i class="fa-solid fa-graduation-cap"></i><span class="m-3">Clase asignada</span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
